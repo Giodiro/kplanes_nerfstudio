@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+authors = [
+    {name = "Giacomo Meanti", email = "giacomo.meanti@iit.it"},
+    {name = "Sara Fridovich-Keil"}
+]
+name = "kplanes_nerfstudio"
+description = "K-Planes nerfstudio integration"
+readme = "README.md"
+license = {text = "BSD 3-Clause"}
+dependencies=[
+    "nerfstudio>=0.2.0"
+]
+dynamic = ["version"]
+
+[project.entry-points."nerfstudio.method_configs"]
+kplanes = "kplanes.kplanes_configs:kplanes_method"
+kplanes_dynamic = "kplanes.kplanes_configs:kplanes_dynamic_method"
+
+[tool.setuptools]
+include-package-data = true
+packages = [
+    "kplanes"
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "kplanes.__version__" }
+
