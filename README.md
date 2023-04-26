@@ -1,4 +1,13 @@
-# K-Planes Nerfstudio integration
+<p align="left">
+    <!-- PyPi badge -->
+    <a href="https://badge.fury.io/py/kplanes-nerfstudio"><img src="https://badge.fury.io/py/kplanes-nerfstudio.svg" alt="PyPI version"></a>
+    <!-- License badge -->
+    <a href="LICENSE.txt">
+        <img alt="license" src="https://img.shields.io/badge/license-BSD-blue">
+    </a>
+</p>
+
+# K-Planes nerfstudio integration
 
 This repository provides code to integrate the [K-Planes model](https://sarafridov.github.io/K-Planes) into [nerfstudio](https://docs.nerf.studio/en/latest/index.html).
 
@@ -13,8 +22,8 @@ Beware that some details about the training procedure differ from the official r
 
 ## Installation
 
-1. Install [nerfstudio](https://docs.nerf.studio/en/latest/quickstart/installation.html). This is `pip install nerfstudio`, but there are a few dependencies (e.g. `torch`, `tinycudann`) which may require further steps, so make sure to check their installation guide!
-2. Install k-planes nerfstudio: `pip install kplanes-nerfstudio`
+1. [Install nerfstudio](https://docs.nerf.studio/en/latest/quickstart/installation.html). This is `pip install nerfstudio`, but there are a few dependencies (e.g. `torch`, `tinycudann`) which may require further steps, so make sure to check their installation guide!
+2. Install the k-planes nerfstudio integration (this repository): `pip install kplanes-nerfstudio`
 
 ## Included Models
 
