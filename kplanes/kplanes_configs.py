@@ -36,6 +36,7 @@ kplanes_method = MethodSpecification(
                     {"num_output_coords": 8, "resolution": [256, 256, 256]}
                 ],
                 loss_coefficients={
+                    "interlevel": 1.0,
                     "distortion": 0.01,
                     "plane_tv": 0.01,
                     "plane_tv_proposal_net": 0.0001,
@@ -84,6 +85,7 @@ kplanes_dynamic_method = MethodSpecification(
                     {"num_output_coords": 8, "resolution": [256, 256, 256, 25]},
                 ],
                 loss_coefficients={
+                    "interlevel": 1.0,
                     "distortion": 0.01,
                     "plane_tv": 0.1,
                     "plane_tv_proposal_net": 0.0001,
