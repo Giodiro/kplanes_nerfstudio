@@ -30,7 +30,7 @@ from nerfstudio.field_components.embedding import Embedding
 from nerfstudio.field_components.encodings import KPlanesEncoding
 from nerfstudio.field_components.field_heads import FieldHeadNames
 from nerfstudio.field_components.spatial_distortions import SpatialDistortion
-from nerfstudio.fields.base_field import Field, shift_directions_for_tcnn
+from nerfstudio.fields.base_field import Field, get_normalized_directions
 
 try:
     import tinycudann as tcnn
@@ -244,7 +244,7 @@ class KPlanesField(Field):
         if self.linear_decoder:
             color_features = [density_embedding]
         else:
-            directions = shift_directions_for_tcnn(directions)
+            directions = get_normalized_directions(directions)
             d = self.direction_encoding(directions)
             color_features = [d, density_embedding.view(-1, self.geo_feat_dim)]
 
