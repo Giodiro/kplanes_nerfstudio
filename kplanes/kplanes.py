@@ -327,6 +327,7 @@ class KPlanesModel(Model):
 
     def get_metrics_dict(self, outputs, batch):
         image = batch["image"].to(self.device)
+        image = self.renderer_rgb.blend_background(image)  # Blend if RGBA
 
         metrics_dict = {
             "psnr": self.psnr(outputs["rgb"], image)
@@ -351,8 +352,13 @@ class KPlanesModel(Model):
 
     def get_loss_dict(self, outputs, batch, metrics_dict=None):
         image = batch["image"].to(self.device)
+        pred_rgb, image = self.renderer_rgb.blend_background_for_loss_computation(
+            pred_image=outputs["rgb"],
+            pred_accumulation=outputs["accumulation"],
+            gt_image=image,
+        )
 
-        loss_dict = {"rgb": self.rgb_loss(image, outputs["rgb"])}
+        loss_dict = {"rgb": self.rgb_loss(image, pred_rgb)}
         if self.training:
             for key in self.config.loss_coefficients:
                 if key in metrics_dict:
@@ -366,6 +372,7 @@ class KPlanesModel(Model):
         self, outputs: Dict[str, torch.Tensor], batch: Dict[str, torch.Tensor]
     ) -> Tuple[Dict[str, float], Dict[str, torch.Tensor]]:
         image = batch["image"].to(self.device)
+        image = self.renderer_rgb.blend_background(image)
 
         rgb = outputs["rgb"]
         acc = colormaps.apply_colormap(outputs["accumulation"])
