@@ -23,7 +23,7 @@ Beware that some details about the training procedure differ from the official r
 ## Installation
 
 1. [Install nerfstudio](https://docs.nerf.studio/en/latest/quickstart/installation.html). This is `pip install nerfstudio`, but there are a few dependencies (e.g. `torch`, `tinycudann`) which may require further steps, so make sure to check their installation guide!
-2. Install the k-planes nerfstudio integration (this repository): `pip install kplanes-nerfstudio`
+2. Install the k-planes nerfstudio integration (this repository): `pip install git+https://github.com/Giodiro/kplanes_nerfstudio`
 
 ## Included Models
 
