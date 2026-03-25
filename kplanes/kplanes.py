@@ -63,10 +63,10 @@ class KPlanesModelConfig(ModelConfig):
 
     _target: Type = field(default_factory=lambda: KPlanesModel)
 
-    near_plane: float = 2.0
+    near_plane: float = 0.0
     """How far along the ray to start sampling."""
 
-    far_plane: float = 6.0
+    far_plane: float = 1000.0
     """How far along the ray to stop sampling."""
 
     grid_base_resolution: List[int] = field(default_factory=lambda: [128, 128, 128])
